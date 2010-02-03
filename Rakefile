@@ -5,8 +5,8 @@ begin
   require 'jeweler'
   Jeweler::Tasks.new do |gem|
     gem.name = "blundersaur"
-    gem.summary = %Q{TODO: one-line summary of your gem}
-    gem.description = %Q{TODO: longer description of your gem}
+    gem.summary = %Q{A library of Ruby methods to simulate data entry mistakes}
+    gem.description = %Q{A library of Ruby methods to simulate data entry mistakes}
     gem.email = "viking415@gmail.com"
     gem.homepage = "http://github.com/viking/blundersaur"
     gem.authors = ["Jeremy Stephens"]

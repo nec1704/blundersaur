@@ -1,4 +1,4 @@
-require File.join(File.dirname(__FILE__), "..", "..", "helper")
+require 'helper'
 
 module Blundersaur
   module Extensions
@@ -23,6 +23,11 @@ module Blundersaur
         result = "hello".mistype
         assert_not_equal result, "hello"
         assert_match /^[gjh][wre][kl][kl][ipo]$/, result
+      end
+
+      def test_random_mistake
+        result = "hey there buddy".random_mistake
+        assert_not_equal result, "hey there buddy"
       end
     end
   end

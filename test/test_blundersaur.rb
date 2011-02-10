@@ -1,4 +1,4 @@
-require File.join(File.dirname(__FILE__), "helper")
+require 'helper'
 
 class TestBlundersaur < Test::Unit::TestCase
   def test_truth

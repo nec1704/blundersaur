@@ -34,6 +34,7 @@ module Blundersaur
         }
         expected.each_pair do |char, set|
           assert_equal set, Qwerty.keys_near(char)
+          assert_equal set.collect(&:upcase), Qwerty.keys_near(char.upcase)
         end
       end
     end

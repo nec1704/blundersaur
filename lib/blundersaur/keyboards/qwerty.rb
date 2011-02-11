@@ -7,8 +7,11 @@ module Blundersaur
         nil, "z", "x", "c", "v", "b", "n", "m", nil
       ]
       def self.keys_near(char)
-        i = ROWS.index(char)
-        ROWS.values_at(i-1, i+1).compact
+        upcased = char.ord < 97
+        i = ROWS.index(char.downcase)
+        keys = ROWS.values_at(i-1, i+1).compact
+        keys.collect!(&:upcase) if upcased
+        keys
       end
     end
   end

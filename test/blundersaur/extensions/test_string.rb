@@ -61,6 +61,12 @@ module Blundersaur
         assert %w{there they're}.include?("their".phonetic_swap)
       end
 
+      def test_phonetic_swap_handles_word_case
+        result = "There".phonetic_swap
+        assert_not_equal "There", result
+        assert_equal "T", result[0..0]
+      end
+
       def test_phonetic_swap_nothing
         str = "nothing"
         assert_equal str, str.phonetic_swap

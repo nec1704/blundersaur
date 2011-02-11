@@ -80,7 +80,7 @@ module Blundersaur
             next
           end
           re_str = "(?:#{group.join('|')})"
-          re = Regexp.new(whole_words ? '\b'+re_str+'\b' : re_str)
+          re = Regexp.new(whole_words ? '\b'+re_str+'\b' : re_str, 'i')
 
           matches[index] = []
           scan(re) do |str|
@@ -99,7 +99,7 @@ module Blundersaur
 
             # Pick a random match to replace
             offset, string = group_matches.delete_at(rand(group_matches.length))
-            taken_index = group.index(string)
+            taken_index = group.index(string.downcase)
             matches.delete(group_index) if group_matches.empty?
 
             # Adjust offset if necessary
@@ -112,13 +112,22 @@ module Blundersaur
             elt_indices = (0...group.length).sort { |a, b| rand(3) - 1 }
             elt_index = elt_indices.shift
             elt_index = elt_indices.shift if elt_index == taken_index
-            replacement = group[elt_index]
+            replacement = group[elt_index].dup
 
-            # Booyah!
+            # Add adjustment for further iterations
             diff = replacement.length - string.length
             if diff != 0
               adjustments << [offset, diff]
             end
+
+            # Match case of string in replacement
+            len = diff < 0 ? replacement.length : string.length
+            len.times do |i|
+              ord = string[i].ord
+              replacement[i] = replacement[i].upcase if ord >= 65 && ord <= 90
+            end
+
+            # Booyah!
             self[offset, string.length] = replacement
 
             break if matches.empty?

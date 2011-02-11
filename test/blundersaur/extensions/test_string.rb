@@ -40,7 +40,7 @@ module Blundersaur
       end
 
       def test_random_mistake
-        str = "hey there buddy"
+        str = "hey there mister"
         50.times do
           assert_not_equal str, str.random_mistake
         end
@@ -86,7 +86,14 @@ module Blundersaur
         assert counts[2] > 0, %{"your you're you're" wasn't ever created}
       end
 
-      def test_flip_letters
+      def test_swap_characters
+        str = "hey"
+        results = %w{ehy hye}
+        20.times do
+          assert results.include?(str.swap_characters)
+        end
+        assert_equal "h", "h".swap_characters
+        assert_equal "", "".swap_characters
       end
     end
   end

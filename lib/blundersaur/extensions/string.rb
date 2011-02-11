@@ -1,7 +1,7 @@
 module Blundersaur
   module Extensions
     module String
-      MISTAKE_METHODS = [:fat_finger!, :stutter!, :mistype!, :phonetic_swap!]
+      MISTAKE_METHODS = [:fat_finger!, :stutter!, :mistype!, :phonetic_swap!, :swap_characters!]
       PHONETIC_GROUPS = [
         # whole words
         ["your", "you're"],
@@ -32,17 +32,17 @@ module Blundersaur
       end
 
       def fat_finger
-        self.dup.fat_finger!
+        dup.fat_finger!
       end
 
       def stutter!
-        i = rand(self.length)
+        i = rand(length)
         self[i..i] = self[i..i] * 2
         self
       end
 
       def stutter
-        self.dup.stutter!
+        dup.stutter!
       end
 
       def mistype!
@@ -56,15 +56,15 @@ module Blundersaur
       end
 
       def mistype
-        self.dup.mistype!
+        dup.mistype!
       end
 
       def random_mistake!
-        self.send(MISTAKE_METHODS[rand(MISTAKE_METHODS.length)])
+        send(MISTAKE_METHODS[rand(MISTAKE_METHODS.length)])
       end
 
       def random_mistake
-        self.dup.random_mistake!
+        dup.random_mistake!
       end
 
       # This method is kind of expensive :(
@@ -83,7 +83,7 @@ module Blundersaur
           re = Regexp.new(whole_words ? '\b'+re_str+'\b' : re_str)
 
           matches[index] = []
-          self.scan(re) do |str|
+          scan(re) do |str|
             matches[index] << [$~.begin(0), str]
           end
           matches.delete(index) if matches[index].empty?
@@ -128,7 +128,20 @@ module Blundersaur
       end
 
       def phonetic_swap(passes = 1)
-        self.dup.phonetic_swap!(passes)
+        dup.phonetic_swap!(passes)
+      end
+
+      def swap_characters!
+        if length > 1
+          i = rand(length-1)
+          r = i..(i+1)
+          self[r] = self[r].reverse
+        end
+        self
+      end
+
+      def swap_characters
+        dup.swap_characters!
       end
     end
   end

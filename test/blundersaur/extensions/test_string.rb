@@ -20,8 +20,8 @@ module Blundersaur
         end
       end
 
-      def test_stutter
-        result = "hello".stutter
+      def test_insertion_with_stutter
+        result = "hello".insertion(true)
         assert_not_equal result, "hello"
         assert_match /^h{1,2}e{1,2}l{1,2}l{1,2}o{1,2}$/, result
       end
@@ -92,14 +92,14 @@ module Blundersaur
         assert counts[2] > 0, %{"your you're you're" wasn't ever created}
       end
 
-      def test_swap_characters
+      def test_transpose
         str = "hey"
         results = %w{ehy hye}
         20.times do
-          assert results.include?(str.swap_characters)
+          assert results.include?(str.transpose)
         end
-        assert_equal "h", "h".swap_characters
-        assert_equal "", "".swap_characters
+        assert_equal "h", "h".transpose
+        assert_equal "", "".transpose
       end
     end
   end

@@ -20,8 +20,8 @@ module Blundersaur
         end
       end
 
-      def test_insertion_with_stutter
-        result = "hello".insertion(true)
+      def test_stutter
+        result = "hello".stutter
         assert_not_equal result, "hello"
         assert_match /^h{1,2}e{1,2}l{1,2}l{1,2}o{1,2}$/, result
       end

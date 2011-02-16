@@ -1,7 +1,7 @@
 module Blundersaur
   module Extensions
     module String
-      MISTAKE_METHODS = [:fat_finger!, :insertion!, :mistype!, :phonetic_swap!, :transpose!]
+      MISTAKE_METHODS = [:fat_finger!, :stutter!, :mistype!, :phonetic_swap!, :transpose!]
       PHONETIC_GROUPS = [
         # whole words
         ["your", "you're"],
@@ -35,14 +35,14 @@ module Blundersaur
         dup.fat_finger!
       end
 
-      def insertion!(copy = false)
+      def stutter!
         i = rand(length)
-        self[i] = copy ? self[i] * 2 : "foo"
+        self[i] = self[i] * 2
         self
       end
 
-      def insertion(copy = false)
-        dup.insertion!(copy)
+      def stutter
+        dup.stutter!
       end
 
       def mistype!

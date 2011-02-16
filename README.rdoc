@@ -2,6 +2,17 @@
 
 Blundersaur is a library of Ruby methods to simulate data entry mistakes.
 
+== Installation
+
+  gem install blundersaur
+
+== Usage
+
+  require 'rubygems'
+  require 'blundersaur'
+
+  "There's a snake in my boots!".random_mistake
+
 == Note on Patches/Pull Requests
 
 * Fork the project.

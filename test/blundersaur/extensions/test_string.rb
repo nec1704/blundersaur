@@ -20,6 +20,12 @@ module Blundersaur
         end
       end
 
+      def test_fat_finger_numbers
+        result = "12345".fat_finger
+        assert_not_equal result, "12345"
+        assert_match /^[2]?1[2]?[13]?2[13]?[24]?3[24]?[35]?4[35]?[46]?5[46]?$/, result
+      end
+
       def test_stutter
         result = "hello".stutter
         assert_not_equal result, "hello"

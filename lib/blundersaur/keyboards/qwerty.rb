@@ -2,6 +2,7 @@ module Blundersaur
   module Keyboards
     module Qwerty
       ROWS = [
+        nil, "1", "2", "3", "4", "5", "6", "7", "8", "9", "0", nil,
         nil, "q", "w", "e", "r", "t", "y", "u", "i", "o", "p", nil,
         nil, "a", "s", "d", "f", "g", "h", "j", "k", "l", nil,
         nil, "z", "x", "c", "v", "b", "n", "m", nil
